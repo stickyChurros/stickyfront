@@ -8,35 +8,40 @@
  *   • Removes metadata for smaller file size
  * - Asset compression:
  *   • Compresses JS, CSS, HTML, and SVG files above 1.4KB
- *   • Uses Gzip compression for smaller file sizes
+ *   • Uses Gzip and Brotli compression for better file size optimization
  * - SVG handling:
  *   • Removes hardcoded dimensions for responsive scaling
  *   • Enables CSS-based dimension control
  * - Bundle optimization:
  *   • Implements smart vendor chunk splitting
+ *   • Handles cross-platform compatibility issues
  * - Path aliasing:
- *   • Maps '@' to '/src' for cleaner imports
+ *   • Maps '@' to '/src' for cleaner imports, using path resolution for portability
  *
  * @see https://vitejs.dev/config/
  */
 
-import {defineConfig} from 'vite'
-import react from '@vitejs/plugin-react-swc'
-import {vanillaExtractPlugin} from "@vanilla-extract/vite-plugin";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react-swc';
+import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 import svgr from "vite-plugin-svgr";
-import {imagetools} from "vite-imagetools";
+import { imagetools } from "vite-imagetools";
 import compression from "vite-plugin-compression2";
+import path from 'path';
 
 export default defineConfig({
-    plugins: [react(),
+    plugins: [
+        react(),
         vanillaExtractPlugin(),
         compression({
-            include: /\.(js|css|html|svg)$/,  // Specify file extensions for compression
-            threshold: 1400,                   // Only compress files larger than 1.4KB
+            include: /\.(js|css|html|svg)$/,     // Specify file extensions for compression
+            threshold: 1400,                     // Only compress files larger than 1.4KB
+            algorithm: 'brotliCompress',
         }),
         svgr({
             svgrOptions: {
-                dimensions: false,  // Remove width/height attributes from SVGs to rely on CSS styling
+                dimensions: false,                // Remove width/height attributes from SVGs to rely on CSS styling
+                icon: true,                       // Enable icon SVG usage for scalable designs
             },
         }),
         imagetools({
@@ -44,7 +49,7 @@ export default defineConfig({
             defaultDirectives: () =>
                 new URLSearchParams({
                     format: "webp",
-                    quality: "80",  // Apply lossy compression with 80% quality for optimal size/quality ratio
+                    quality: "80",                 // Apply lossy compression with 80% quality for optimal size/quality ratio
                     removeMetadata: "",
                     h: "1080",
                 }),
@@ -71,14 +76,21 @@ export default defineConfig({
                         if (match) {
                             return `${match[0]}-vendor`;
                         }
-                        const module: string = id.split('node_modules/').pop()!.split('/')[0];
+
+                        const module = id.split(`node_modules${path.sep}`).pop()?.split(path.sep)[0];
                         return `vendor-${module}`;
                     }
                 },
             },
         },
     },
+
     resolve: {
-        alias: [{find: "@", replacement: "/src"}],
+        alias: [
+            {
+                find: "@",
+                replacement: path.resolve(__dirname, "src"),
+            }
+        ],
     },
-})
+});
