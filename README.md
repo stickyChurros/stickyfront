@@ -7,10 +7,10 @@ Sticky Front는 React, TypeScript, Vite를 기반으로 하는 현대적인 프�
 ### 1. 최적화된 빌드 환경
 - **이미지 최적화**:
   - 이미지를 WebP 형식으로 변환 (품질 80%)
-  - 최대 높이 1080px 제한g
+  - 최대 높이 1080px 제한
   - 메타데이터 제거로 파일 크기 감소
 - **에셋 압축**:
-  - 1.4KB 이상의 JS, CSS, HTML, SVG 파일을 Gzip 및 Brotli로 압축
+  - 1.4KB 이상의 JS, CSS, HTML, SVG 파일을 Gzip로 압축
 - **SVG 처리**:
   - 하드코딩된 크기를 제거하여 CSS로 크기 제어 가능
   - 반응형 디자인 지원을 위한 아이콘 처리 활성화
@@ -52,25 +52,26 @@ Sticky Front는 React, TypeScript, Vite를 기반으로 하는 현대적인 프�
 ## 설치 및 사용법
 
 ### 1. 프로젝트 클론 및 설치
+> 본 프로젝트의 패키지 관리자는 기본적으로 pnpm입니다. [설치 방법](https://pnpm.io/installation)
 ```bash
 git clone https://github.com/your-username/stickyfront.git
 cd stickyfront
-npm install
+pnpm install
 ```
 
 ### 2. 개발 서버 실행
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 ### 3. 빌드
 ```bash
-npm run build
+pnpm run build
 ```
 
 ### 4. 빌드 미리보기
 ```bash
-npm run preview
+pnpm run preview
 ```
 
 ---
