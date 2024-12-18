@@ -4,10 +4,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Loading } from "@/components/Loading";
 import { routerInfo } from "@/shared/routing/routerInfo.tsx";
+import { LazyComponent } from "@/shared/types/routing.ts";
 
-const lazyLoad = (
-  componets: () => Promise<{ default: React.ComponentType<unknown> }>,
-) => (
+const lazyLoad = (componets: () => LazyComponent) => (
   <Suspense fallback={<Loading />}>
     {React.createElement(React.lazy(componets))}
   </Suspense>
