@@ -6,9 +6,9 @@ import { Loading } from "@/components/Loading";
 import { routerInfo } from "@/shared/routing/routerInfo.tsx";
 import { LazyComponent } from "@/shared/types/routing.ts";
 
-const lazyLoad = (componets: () => LazyComponent) => (
+const lazyLoad = (componets: LazyComponent) => (
   <Suspense fallback={<Loading />}>
-    {React.createElement(React.lazy(componets))}
+    {React.createElement(React.lazy(() => componets))}
   </Suspense>
 );
 
