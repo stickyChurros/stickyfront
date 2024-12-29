@@ -14,7 +14,7 @@ const fadeUpKeyframes = keyframes({
 
 // Container styles
 export const pageContainer = createStyle({
-  minHeight: "100vh",
+  height: "100vh",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
@@ -22,6 +22,16 @@ export const pageContainer = createStyle({
   padding: "2rem",
   background: "linear-gradient(135deg, #FF6A3D 0%, #2E2E2E 50%, #8A2BE2 100%)",
   position: "relative",
+  overscrollBehaviorX: "none",
+  overscrollBehaviorY: "none",
+  "@media": {
+    "screen and (min-width: 1024px)": {
+      overscrollBehaviorY: "none",
+    },
+    "screen and (max-width: 1023px)": {
+      overscrollBehavior: "none",
+    },
+  },
 });
 
 // Header styles
