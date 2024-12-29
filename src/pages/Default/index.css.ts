@@ -1,6 +1,5 @@
 import { style as createStyle, keyframes } from "@vanilla-extract/css";
 
-// Animations
 const fadeUpKeyframes = keyframes({
   from: {
     opacity: 0,
@@ -12,19 +11,16 @@ const fadeUpKeyframes = keyframes({
   },
 });
 
-// Container styles
 export const pageContainer = createStyle({
   height: "100vh",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  // padding: "2rem",
   background: "linear-gradient(135deg, #FF6A3D 0%, #2E2E2E 50%, #8A2BE2 100%)",
   position: "relative",
 });
 
-// Header styles
 export const headerWrapper = createStyle({
   animation: `${fadeUpKeyframes} 0.6s ease-out forwards`,
 });
@@ -46,7 +42,6 @@ export const subtitle = createStyle({
   animationDelay: "0.2s",
 });
 
-// Grid container
 export const cardsGrid = createStyle({
   display: "grid",
   gap: "1.5rem",
