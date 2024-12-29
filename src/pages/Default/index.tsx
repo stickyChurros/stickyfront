@@ -37,7 +37,15 @@ const HomePage = () => {
       <div className={styles.headerWrapper}>
         <h1 className={styles.mainTitle}>Sticky Front 첫 걸음</h1>
         <p className={styles.subtitle}>
-          README의 핵심 포인트들을 살짝 맛보기로 만나보세요!
+          <a
+            href="https://github.com/stickyChurros/stickyfront?tab=readme-ov-file#sticky-front"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.link}
+          >
+            README
+          </a>
+          의 핵심 포인트들을 살짝 맛보기로 만나보세요!
         </p>
       </div>
 
