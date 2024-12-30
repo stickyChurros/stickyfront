@@ -132,7 +132,7 @@ export const menuItemStyles = style({
   },
 });
 
-export const menuItemLinkBase = style({
+const menuItemLinkBase = style({
   display: "inline-block",
   padding: "10px 15px",
   color: "white",
