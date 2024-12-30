@@ -10,7 +10,11 @@
     /* Paths */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@shared/*": ["src/shared/*"],
+      "@styles/*": ["src/shared/styles/*"],
+      "@types/*": ["src/shared/types/*"],
+      "@utils/*": ["src/shared/utils/*"]
     },
 
     /* Bundler mode */
