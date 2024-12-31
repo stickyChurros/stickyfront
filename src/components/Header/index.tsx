@@ -94,7 +94,7 @@ const Header: React.FC = () => {
           {routerInfo
             .filter((item: routerInfoType) => item.expose)
             .sort((a: routerInfoType, b: routerInfoType) =>
-              a.korean.localeCompare(b.korean),
+              a.korean!.localeCompare(b.korean!),
             )
             .map((item: routerInfoType) => (
               <li key={item.path} className={styles.menuItemStyles}>

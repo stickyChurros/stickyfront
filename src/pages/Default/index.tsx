@@ -1,4 +1,3 @@
-import React from "react";
 import * as styles from "./index.css.ts";
 
 const HomePage = () => {
@@ -52,7 +51,6 @@ const HomePage = () => {
       <section className={styles.cardsGrid}>
         {highlightItems.map((item, index) => (
           <div key={index} className={styles.cardContainer}>
-            <div className={styles.glowOverlay} />
             <div className={styles.cardContent}>
               <h3 className={styles.cardTitle}>{item.title}</h3>
               <p className={styles.cardDescription}>{item.description}</p>

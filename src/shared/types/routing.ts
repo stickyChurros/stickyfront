@@ -10,16 +10,23 @@ export type LazyComponent = Promise<{ default: ComponentType<unknown> }>;
 
 /**
  * 라우팅 정보 객체 타입
- * @interface
+ * @typedef {object} routerInfoTypeBase
  * @property {string} path - 라우팅 경로
  * @property {LazyComponent} element - 라우팅 컴포넌트
  * @property {string} [korean] - 한글 이름 (선택적)
  * @property {boolean} [expose] - 헤더 노출 여부 (선택적)
  */
 
-export interface routerInfoType {
-  path: string;
-  element: LazyComponent;
-  korean?: string;
-  expose?: boolean;
-}
+export type routerInfoType =
+  | {
+      path: string;
+      element: LazyComponent;
+      expose: true;
+      korean: string;
+    }
+  | {
+      path: string;
+      element: LazyComponent;
+      expose?: false;
+      korean?: string;
+    };
