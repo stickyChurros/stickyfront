@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Layout from "@/components/Layout";
 import { Loading } from "@/components/Loading";
-import { routerInfo } from "@/shared/routing/routerInfo.tsx";
+import { routerInfo } from "@/shared/routing/routerInfo.ts";
 import { LazyComponent } from "@/shared/types/routing.ts";
 
 const lazyLoad = (componets: LazyComponent) => (
